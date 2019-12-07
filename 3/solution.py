@@ -45,8 +45,7 @@ def LerTipoSenha():
 
 # a. Numérica – conterá apenas algarismos;
 def GerarSenhaTipoA(Tamanho):
-
-  Senha = 'TipoA'
+  Senha = GerarNumeroAleatorioComNDigitos(Tamanho)
   return Senha
 
 # b. Alfabética – conterá apenas letras maiúsculas e minúsculas;
