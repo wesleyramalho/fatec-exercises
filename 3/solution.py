@@ -4,20 +4,26 @@ import sys
 import numbers
 from random import randint
 
-def GerarNumeroAleatorioComNDigitos(n):
-    range_start = 10**(n-1)
-    range_end = (10**n)-1
-    return randint(range_start, range_end)
-
 TiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
 TipoGlobal = 'inicializando tipo global'
 TamanhoGlobal = 0
 
+# Funções auxiliares:
+
+def GerarNumeroAleatorioComNDigitos(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return randint(range_start, range_end)
+
+# Funções de validação:
+
 def ValidarTipoSenha(SenhaDigitada):
   if TiposValidosDeSenha.count(SenhaDigitada): # se o tipo de senha for uma das opções disponíveis, retorna verdadeiro
     return True 
   return False # se não, retorna falso
+
+# Funções para leitura de dados
 
 def LerTipoSenha():
     print("Por favor, escolha um tipo de senha:")
@@ -35,8 +41,7 @@ def LerTipoSenha():
       print("Por favor, digite um tipo válido de senha.")
       exit() # encerra o programa caso seja um tipo inválido
 
-def IniciarPrograma():
-  LerTipoSenha()
+#Funções para gerar senha
 
 # a. Numérica – conterá apenas algarismos;
 def GerarSenhaTipoA(Tamanho):
@@ -93,5 +98,9 @@ def GeraSenha(Tipo, Tam):
   Senha = GerarFuncaoPorTipo(Tam)
   print(Senha)
   return Senha
+
+
+def IniciarPrograma():
+  LerTipoSenha()
 
 IniciarPrograma()
