@@ -2,6 +2,12 @@
 import io
 import sys
 import numbers
+from random import randint
+
+def GerarNumeroAleatorioComNDigitos(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return randint(range_start, range_end)
 
 TiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
@@ -34,7 +40,7 @@ def IniciarPrograma():
 
 # a. Numérica – conterá apenas algarismos;
 def GerarSenhaTipoA(Tamanho):
-  
+
   Senha = 'TipoA'
   return Senha
 
