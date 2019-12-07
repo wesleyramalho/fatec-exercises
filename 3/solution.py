@@ -5,20 +5,13 @@ import numbers
 
 TiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
-TipoGlobal = 'kk'
+TipoGlobal = 'inicializando tipo global'
 TamanhoGlobal = 0
-
 
 def ValidarTipoSenha(SenhaDigitada):
   if TiposValidosDeSenha.count(SenhaDigitada): # se o tipo de senha for uma das opções disponíveis, retorna verdadeiro
     return True 
   return False # se não, retorna falso
-
-def ValidarTamanhoSenha(TamanhoDigitado):
-  # if isinstance(TamanhoDigitado, int): # se o tamanho for uma variável do tipo inteiro, retorna verdadeiro
-  return True
-  return False
-
 
 def LerTipoSenha():
     print("Por favor, escolha um tipo de senha:")
@@ -39,22 +32,28 @@ def LerTipoSenha():
 def IniciarPrograma():
   LerTipoSenha()
 
+# a. Numérica – conterá apenas algarismos;
 def GerarSenhaTipoA(Tamanho):
+  
   Senha = 'TipoA'
   return Senha
 
+# b. Alfabética – conterá apenas letras maiúsculas e minúsculas;
 def GerarSenhaTipoB(Tamanho):
   Senha = 'TipoB'
   return Senha
 
+# c. Alfanumérica 1 – conterá letras maiúsculas e algarismos;
 def GerarSenhaTipoC(Tamanho):
   Senha = 'TipoC'
   return Senha
 
+# d. Alfanumérica 2 – conterá letras maiúsculas, minúsculas e algarismos;
 def GerarSenhaTipoD(Tamanho):
   Senha = 'TipoD'
   return Senha
 
+# e. Geral – conterá letras maiúsculas, minúsculas, algarismos e os caracteres ASCII [33, 46] e [58, 64]
 def GerarSenhaTipoE(Tamanho):
   Senha = 'TipoE'
   return Senha
