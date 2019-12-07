@@ -3,8 +3,6 @@ import io
 import sys
 import numbers
 
-tiposValidosDeSenha = 'abcde'
-
 tiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
 TipoGlobal = 'kk'
