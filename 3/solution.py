@@ -39,14 +39,54 @@ def LerTipoSenha():
 def IniciarPrograma():
   LerTipoSenha()
 
+def GerarSenhaTipoA(Tamanho):
+  Senha = 'TipoA'
+  return Senha
+
+def GerarSenhaTipoB(Tamanho):
+  Senha = 'TipoB'
+  return Senha
+
+def GerarSenhaTipoC(Tamanho):
+  Senha = 'TipoC'
+  return Senha
+
+def GerarSenhaTipoD(Tamanho):
+  Senha = 'TipoD'
+  return Senha
+
+def GerarSenhaTipoE(Tamanho):
+  Senha = 'TipoE'
+  return Senha
+
+switcher = {
+        "a": GerarSenhaTipoA,
+        "A": GerarSenhaTipoA,
+        "b": GerarSenhaTipoB,
+        "B": GerarSenhaTipoB,
+        "c": GerarSenhaTipoC,
+        "C": GerarSenhaTipoC,
+        "d": GerarSenhaTipoD,
+        "D": GerarSenhaTipoD,
+        "e": GerarSenhaTipoE,
+        "E": GerarSenhaTipoE,
+    }
+ 
+ 
+def tipoParaFuncao(tipo):
+    func = switcher.get(tipo, "nenhum tipo")
+    return func
 
 def GeraSenha(Tipo, Tam):
   print("Gerando senha...")
-  print("Tipo:")
-  print(Tipo)
-  print("Tamanho:")
-  print(Tam)
-  Senha = 'ksdfjla'
+  # print("Tipo:")
+  # print(Tipo)
+  # print("Tamanho:")
+  # print(Tam)
+
+  GerarFuncaoPorTipo = tipoParaFuncao(Tipo)
+  Senha = GerarFuncaoPorTipo(Tam)
+  print(Senha)
   return Senha
 
 IniciarPrograma()
