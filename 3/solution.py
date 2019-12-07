@@ -3,19 +3,19 @@ import io
 import sys
 import numbers
 
-tiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
+TiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
 TipoGlobal = 'kk'
 TamanhoGlobal = 0
 
 
-def ValidarTipoSenha(senhaDigitada):
-  if tiposValidosDeSenha.count(senhaDigitada): # se o tipo de senha for uma das opções disponíveis, retorna verdadeiro
+def ValidarTipoSenha(SenhaDigitada):
+  if TiposValidosDeSenha.count(SenhaDigitada): # se o tipo de senha for uma das opções disponíveis, retorna verdadeiro
     return True 
   return False # se não, retorna falso
 
-def ValidarTamanhoSenha(tamanhoDigitado):
-  # if isinstance(tamanhoDigitado, int): # se o tamanho for uma variável do tipo inteiro, retorna verdadeiro
+def ValidarTamanhoSenha(TamanhoDigitado):
+  # if isinstance(TamanhoDigitado, int): # se o tamanho for uma variável do tipo inteiro, retorna verdadeiro
   return True
   return False
 
@@ -46,7 +46,7 @@ def GeraSenha(Tipo, Tam):
   print(Tipo)
   print("Tamanho:")
   print(Tam)
-  senha = 'ksdfjla'
-  return senha
+  Senha = 'ksdfjla'
+  return Senha
 
 IniciarPrograma()
