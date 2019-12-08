@@ -138,7 +138,6 @@ def GerarSenhaTipoC(Tamanho):
 
 # d. Alfanumérica 2 – conterá letras maiúsculas, minúsculas e algarismos;
 def GerarSenhaTipoD(Tamanho):
-
   opcoesAscii = {
     0: 'MAIUSCULAS',
     1: 'MINUSCULAS',
@@ -161,7 +160,29 @@ def GerarSenhaTipoD(Tamanho):
 
 # e. Geral – conterá letras maiúsculas, minúsculas, algarismos e os caracteres ASCII [33, 46] e [58, 64]
 def GerarSenhaTipoE(Tamanho):
-  Senha = 'TipoE'
+  opcoesAscii = {
+    0: 'MAIUSCULAS',
+    1: 'MINUSCULAS',
+    2: 'ALGARISMOS',
+    3: 'ESPECIAIS_I',
+    4: 'ESPECIAIS_II',
+  }
+  senha = list(range(Tamanho))
+
+  for indice in range(Tamanho):
+    numeroAleatorio = randrange(0,5)
+    if (opcoesAscii.get(numeroAleatorio) == 'MAIUSCULAS'):
+      caractere = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'MINUSCULAS'):
+      caractere = chr(randrange(MINUSCULAS_ASCII_PRIMEIRO_DECIMAL, MINUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'ALGARISMOS'):
+      caractere = chr(randrange(ALGARISMOS_ASCII_PRIMEIRO_DECIMAL, ALGARISMOS_ASCII_ULTIMO_DECIMAL + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'ESPECIAIS_I'):
+      caractere = chr(randrange(CARACTERES_ESPECIAIS_PARTE_I_ASCII_INICIO, CARACTERES_ESPECIAIS_PARTE_I_ASCII_FIM + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'ESPECIAIS_II'):
+      caractere = chr(randrange(CARACTERES_ESPECIAIS_PARTE_II_ASCII_INICIO, CARACTERES_ESPECIAIS_PARTE_II_ASCII_FIM + 1))
+    senha[indice] = caractere
+  Senha = "".join((senha))
   return Senha
 
 switcher = {
