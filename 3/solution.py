@@ -3,6 +3,7 @@ import io
 import sys
 import numbers
 from random import randint
+from random import randrange
 
 TiposValidosDeSenha = ["a", "b", "c", "d", "e", "A", "B", "C", "D", "E"]
 
@@ -14,6 +15,11 @@ TipoGlobal = "inicializando tipo"
 TamanhoGlobal = 0
 
 # Funções auxiliares:
+
+def checarSeNumeroEPar(numero):
+  if (numero % 2) == 0:
+    return True
+  return False
 
 def GerarNumeroAleatorioComNDigitos(n):
     range_start = 10**(n-1)
@@ -74,7 +80,28 @@ def GerarSenhaTipoA(Tamanho):
 
 # b. Alfabética – conterá apenas letras maiúsculas e minúsculas;
 def GerarSenhaTipoB(Tamanho):
-  Senha = 'TipoB'
+  MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL = 65
+  MAIUSCULAS_ASCII_ULTIMO_DECIMAL = 90
+
+  MINUSCULAS_ASCII_PRIMEIRO_DECIMAL = 97
+  MINUSCULAS_ASCII_ULTIMO_DECIMAL = 122
+
+  # Para cada caractere até completar o tamanho da lista, gerar um caractere aleatório dentro do range ASCII
+  # que contemple apenas letras MAIÚSCULAS e minúsculas
+  
+  #Gerando uma lista que será transformada numa string e armazenará cada caractere da nova senha  
+  senha = list(range(Tamanho))
+
+  # gerando cada caractere da senha
+  for indice in range(Tamanho):
+    # Se o indice for par, gerar caractere MAIUSCULO
+    if checarSeNumeroEPar(indice):
+      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL))
+    # Se o indice for ímpar, gerar caractere minúsculo
+    else:
+      senha[indice] = chr(randrange(MINUSCULAS_ASCII_PRIMEIRO_DECIMAL, MINUSCULAS_ASCII_ULTIMO_DECIMAL))
+  # Transformando lista de senha em string com caracteres juntos
+  Senha = "".join((senha))
   return Senha
 
 # c. Alfanumérica 1 – conterá letras maiúsculas e algarismos;
