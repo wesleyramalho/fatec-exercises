@@ -97,6 +97,7 @@ def GerarSenhaTipoB(Tamanho):
     # Se o indice for par, gerar caractere MAIUSCULO
     # Aqui qualquer lógica que escolha alguma das opções de range da tabel ASCII é válida, optei por checar se o índice é par ou ímpar
     if checarSeNumeroEPar(indice):
+      # chr() converte um número para um caractere com base na tabela ASCII
       senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL))
     # Se o indice for ímpar, gerar caractere minúsculo
     else:
