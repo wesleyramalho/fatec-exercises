@@ -109,7 +109,20 @@ def GerarSenhaTipoB(Tamanho):
 
 # c. Alfanumérica 1 – conterá letras maiúsculas e algarismos;
 def GerarSenhaTipoC(Tamanho):
-  Senha = 'TipoC'
+  MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL = 65
+  MAIUSCULAS_ASCII_ULTIMO_DECIMAL = 90
+  
+  ALGARISMOS_ASCII_PRIMEIRO_DECIMAL = 48
+  ALGARISMOS_ASCII_ULTIMO_DECIMAL = 57
+
+  senha = list(range(Tamanho))
+
+  for indice in range(Tamanho):
+    if checarSeNumeroEPar(indice):
+      senha[indice] = chr(randrange(ALGARISMOS_ASCII_PRIMEIRO_DECIMAL, ALGARISMOS_ASCII_ULTIMO_DECIMAL))
+    else:
+      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL))
+  Senha = "".join((senha))
   return Senha
 
 # d. Alfanumérica 2 – conterá letras maiúsculas, minúsculas e algarismos;
