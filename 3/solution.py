@@ -14,6 +14,27 @@ listaSenhas = []
 TipoGlobal = "inicializando tipo"
 TamanhoGlobal = 0
 
+# Ranges da tabela ASCII
+
+# MAIÚSCULOS
+MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL = 65
+MAIUSCULAS_ASCII_ULTIMO_DECIMAL = 90
+
+# Minúsculos
+MINUSCULAS_ASCII_PRIMEIRO_DECIMAL = 97
+MINUSCULAS_ASCII_ULTIMO_DECIMAL = 122
+
+# Algarismos
+ALGARISMOS_ASCII_PRIMEIRO_DECIMAL = 48
+ALGARISMOS_ASCII_ULTIMO_DECIMAL = 57
+
+# Caracteres especiais
+CARACTERES_ESPECIAIS_PARTE_I_ASCII_INICIO = 33
+CARACTERES_ESPECIAIS_PARTE_I_ASCII_FIM = 46
+
+CARACTERES_ESPECIAIS_PARTE_II_ASCII_INICIO = 58
+CARACTERES_ESPECIAIS_PARTE_II_ASCII_FIM = 64
+
 # Funções auxiliares:
 
 def checarSeNumeroEPar(numero):
@@ -80,11 +101,6 @@ def GerarSenhaTipoA(Tamanho):
 
 # b. Alfabética – conterá apenas letras maiúsculas e minúsculas;
 def GerarSenhaTipoB(Tamanho):
-  MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL = 65
-  MAIUSCULAS_ASCII_ULTIMO_DECIMAL = 90
-
-  MINUSCULAS_ASCII_PRIMEIRO_DECIMAL = 97
-  MINUSCULAS_ASCII_ULTIMO_DECIMAL = 122
 
   # Para cada caractere até completar o tamanho da lista, gerar um caractere aleatório dentro do range ASCII
   # que contemple apenas letras MAIÚSCULAS e minúsculas
@@ -99,35 +115,48 @@ def GerarSenhaTipoB(Tamanho):
     if checarSeNumeroEPar(indice):
       # chr() converte um número para um caractere com base na tabela ASCII
       # randrange gera um número dentro do intervalo especificado
-      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL))
+      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
     # Se o indice for ímpar, gerar caractere minúsculo
     else:
-      senha[indice] = chr(randrange(MINUSCULAS_ASCII_PRIMEIRO_DECIMAL, MINUSCULAS_ASCII_ULTIMO_DECIMAL))
+      senha[indice] = chr(randrange(MINUSCULAS_ASCII_PRIMEIRO_DECIMAL, MINUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
   # Transformando lista de senha em string com caracteres juntos
   Senha = "".join((senha))
   return Senha
 
 # c. Alfanumérica 1 – conterá letras maiúsculas e algarismos;
 def GerarSenhaTipoC(Tamanho):
-  MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL = 65
-  MAIUSCULAS_ASCII_ULTIMO_DECIMAL = 90
-  
-  ALGARISMOS_ASCII_PRIMEIRO_DECIMAL = 48
-  ALGARISMOS_ASCII_ULTIMO_DECIMAL = 57
 
   senha = list(range(Tamanho))
 
   for indice in range(Tamanho):
     if checarSeNumeroEPar(indice):
-      senha[indice] = chr(randrange(ALGARISMOS_ASCII_PRIMEIRO_DECIMAL, ALGARISMOS_ASCII_ULTIMO_DECIMAL))
+      senha[indice] = chr(randrange(ALGARISMOS_ASCII_PRIMEIRO_DECIMAL, ALGARISMOS_ASCII_ULTIMO_DECIMAL + 1))
     else:
-      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL))
+      senha[indice] = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
   Senha = "".join((senha))
   return Senha
 
 # d. Alfanumérica 2 – conterá letras maiúsculas, minúsculas e algarismos;
 def GerarSenhaTipoD(Tamanho):
-  Senha = 'TipoD'
+
+  opcoesAscii = {
+    0: 'MAIUSCULAS',
+    1: 'MINUSCULAS',
+    2: 'ALGARISMOS',
+    3: 'ESPECIAIS_I',
+    4: 'ESPECIAIS_II',
+  }
+  senha = list(range(Tamanho))
+  for indice in range(Tamanho):
+    numeroAleatorio = randrange(0,3)
+    if (opcoesAscii.get(numeroAleatorio) == 'MAIUSCULAS'):
+      caractere = chr(randrange(MAIUSCULAS_ASCII_PRIMEIRO_DECIMAL, MAIUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'MINUSCULAS'):
+      caractere = chr(randrange(MINUSCULAS_ASCII_PRIMEIRO_DECIMAL, MINUSCULAS_ASCII_ULTIMO_DECIMAL + 1))
+    elif (opcoesAscii.get(numeroAleatorio) == 'ALGARISMOS'):
+      caractere = chr(randrange(ALGARISMOS_ASCII_PRIMEIRO_DECIMAL, ALGARISMOS_ASCII_ULTIMO_DECIMAL + 1))
+    senha[indice] = caractere
+  Senha = "".join((senha))
   return Senha
 
 # e. Geral – conterá letras maiúsculas, minúsculas, algarismos e os caracteres ASCII [33, 46] e [58, 64]
